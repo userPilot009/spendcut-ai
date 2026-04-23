@@ -1,9 +1,10 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { supabaseBrowser } from "@/lib/supabase";
+import { getSupabaseBrowser } from "@/lib/supabase";
 
 export default function LoginPage() {
+  const supabaseBrowser = getSupabaseBrowser();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");

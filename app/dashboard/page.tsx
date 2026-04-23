@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabaseBrowser } from "@/lib/supabase";
+import { getSupabaseBrowser } from "@/lib/supabase";
 
 import CancelSuggestions from "@/components/CancelSuggestions";
 import SpendSummary from "@/components/SpendSummary";
@@ -10,6 +10,7 @@ import UploadForm from "@/components/UploadForm";
 import type { UploadResult } from "@/types";
 
 export default function DashboardPage() {
+  const supabaseBrowser = getSupabaseBrowser();
   const [result, setResult] = useState<UploadResult | null>(null);
   const [user, setUser] = useState<{ id: string; email?: string | null } | null>(
     null

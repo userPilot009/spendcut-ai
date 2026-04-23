@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { detectSubscriptions } from "@/lib/detectSubscriptions";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 import type { Subscription, Transaction, UploadResult } from "@/types";
 
 type AnalyzeRequestBody = {
@@ -14,6 +14,7 @@ type ErrorBody = {
 
 export async function POST(request: Request) {
   try {
+    const supabase = getSupabase();
     const body = (await request.json()) as AnalyzeRequestBody;
     const uploadId = body.upload_id;
 

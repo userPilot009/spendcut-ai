@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { parseCSV } from "@/lib/parseCSV";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 import type { Transaction } from "@/types";
 
 type ErrorBody = {
@@ -10,6 +10,7 @@ type ErrorBody = {
 
 export async function POST(request: Request) {
   try {
+    const supabase = getSupabase();
     const formData = await request.formData();
     const file = formData.get("file");
     const userId = formData.get("userId");
