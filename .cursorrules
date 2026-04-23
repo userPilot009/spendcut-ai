@@ -1,0 +1,35 @@
+## Project: SpendCut AI — MVP only
+
+### Stack
+- Next.js 14 App Router
+- Supabase (auth + postgres)
+- Tailwind CSS
+- TypeScript
+
+### MVP scope (DO NOT exceed this)
+- CSV upload of bank transactions
+- Detect subscription keywords
+- Show dashboard: total spend, waste, duplicates
+- Cancel suggestions list
+- NO: real-time bank sync, ML, team features, webhooks
+
+### Rules you must follow
+1. Never create features outside MVP scope above
+2. One file per response — never touch multiple files at once
+3. Always use TypeScript — no `any` types
+4. Use Supabase client from lib/supabase.ts only
+5. Tailwind only for styling — no CSS files, no styled-components
+6. Keep components small — one job per component
+7. If unsure, ask me before building
+8. Never install new npm packages without asking first
+
+### Supabase tables (reference only)
+- users (id, email, created_at)
+- uploads (id, user_id, filename, created_at)
+- transactions (id, upload_id, date, description, amount, currency)
+- subscriptions (id, upload_id, name, amount, frequency, is_duplicate, is_waste)
+
+### File naming
+- Components: PascalCase (UploadForm.tsx)
+- Utilities: camelCase (parseCSV.ts)
+- Pages: lowercase with hyphens (app/dashboard/page.tsx)
